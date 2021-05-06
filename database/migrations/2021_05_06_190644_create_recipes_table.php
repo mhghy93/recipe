@@ -18,6 +18,10 @@ class CreateRecipesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('pic');
+            $table->enum('food_type', ['veg', 'non-veg']);
+            $table->bigInteger('likes');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
