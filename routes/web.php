@@ -25,3 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipes.create')->middleware('auth');
+Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');

@@ -8,7 +8,21 @@
                 <div class="card-header lead">{{ __('Add Recipe') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    @if ($errors->any())
+                       @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $error }}
+                                <button 
+                                    type="button" 
+                                    class="close" 
+                                    data-dismiss="alert" 
+                                    aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endforeach
+                    @endif
+                    <form method="POST" action="/recipes" enctype="multipart/form-data">
                         @csrf
 
                         {{-- Title --}}
@@ -18,7 +32,15 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input id="title" placeholder="Title" type="text" class="form-control"  name="title" required autocomplete="title" autofocus>
+                                <input 
+                                    id="title" 
+                                    placeholder="Title" 
+                                    type="text" 
+                                    class="form-control"  
+                                    name="title" 
+                                    value="{{ old('title') }}"
+                                    autocomplete="title" 
+                                    autofocus>
                             </div>
                         </div>
 
@@ -29,28 +51,51 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control-file" id="pic" name="pic" required autocomplete="pic" autofocus>
+                                <input 
+                                    type="file" 
+                                    class="form-control-file" 
+                                    id="pic" 
+                                    name="pic" 
+                                    value="{{ old('pic') }}"
+                                    autocomplete="pic" 
+                                    autofocus>
                             </div>
                         </div>
 
                         {{-- Food Type --}}
                         <div class="form-group row">
-                            <label for="foodtype" class="col-md-4 col-form-label text-md-left">
+                            <label for="food_type" class="col-md-4 col-form-label text-md-left">
                                 <i class="far fa-lemon"></i> {{ __('Food Type') }}
                             </label>
 
-                            <div class="col-md-6 ml-3">
-                                <input class="form-check-input" type="radio" name="veg" id="veg" value="veg" required autofocus checked>
-                                <label class="form-check-label" for="veg">
-                                    Veg
-                                </label>
-
-                                <br>
-
-                                <input class="form-check-input" type="radio" name="non-veg" id="non-veg" value="non-veg" required autofocus>
-                                <label class="form-check-label" for="non-veg">
-                                    Non-Veg
-                                </label>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="radio" 
+                                        name="food_type" 
+                                        id="veg" 
+                                        value="veg"
+                                        {{ old('food_type') == 'veg' ? 'checked' : '' }}
+                                        autofocus>
+                                    <label class="form-check-label" for="veg">
+                                        Veg
+                                    </label>
+                                </div>
+                               
+                                <div class="form-check">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="radio" 
+                                        name="food_type" 
+                                        id="non-veg" 
+                                        value="non-veg"
+                                        {{ old('food_type') == 'non-veg' ? 'checked' : '' }}
+                                        autofocus>
+                                    <label class="form-check-label" for="non-veg">
+                                        Non-Veg
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -61,12 +106,33 @@
                             </label>
 
                             <div class="col-md-6">
-                                <select class="custom-select" id="food_category" required>
+                                <select class="custom-select" id="food_category" name="food_category">
                                     <option selected disabled value="">Choose...</option>
-                                    <option>Mughlai</option>
-                                    <option>North Indian</option>
-                                    <option>South Indian</option>
-                                    <option>Chinese</option>
+                                    <option 
+                                        {{ old('food_category') == 'Mughlai' ? 'selected' : '' }} 
+                                        value="Mughlai">
+                                        Mughlai
+                                    </option>
+                                    <option
+                                        {{ old('food_category') == 'North India' ? 'selected' : '' }} 
+                                        value="North India">
+                                        North Indian
+                                    </option>
+                                    <option
+                                        {{ old('food_category') == 'South India' ? 'selected' : '' }} 
+                                        value="South India">
+                                        South Indian
+                                    </option>          
+                                    <option 
+                                        {{ old('food_category') == 'Chinese' ? 'selected' : '' }}
+                                        value="Chinese">
+                                        Chinese
+                                    </option>
+                                    <option
+                                        {{ old('food_category') == 'Other' ? 'selected' : '' }} 
+                                        value="Other">
+                                        Other
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -79,8 +145,14 @@
                             </label>
 
                             <div class="col-md-6">
-                                <textarea id="description" rows="10" class="form-control" name="description" required autocomplete="name" autofocus>  
-                                </textarea>   
+                                <textarea 
+                                    id="description" 
+                                    placeholder="Description..."
+                                    rows="10" 
+                                    class="form-control" 
+                                    name="description" 
+                                    autocomplete="name"> 
+                                    {{ old('description')}}</textarea>   
                             </div>
                         </div>
 
