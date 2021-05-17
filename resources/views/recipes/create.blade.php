@@ -108,31 +108,13 @@
                             <div class="col-md-6">
                                 <select class="custom-select" id="food_category" name="food_category">
                                     <option selected disabled value="">Choose...</option>
-                                    <option 
-                                        {{ old('food_category') == 'Mughlai' ? 'selected' : '' }} 
-                                        value="Mughlai">
-                                        Mughlai
-                                    </option>
-                                    <option
-                                        {{ old('food_category') == 'North India' ? 'selected' : '' }} 
-                                        value="North India">
-                                        North Indian
-                                    </option>
-                                    <option
-                                        {{ old('food_category') == 'South India' ? 'selected' : '' }} 
-                                        value="South India">
-                                        South Indian
-                                    </option>          
-                                    <option 
-                                        {{ old('food_category') == 'Chinese' ? 'selected' : '' }}
-                                        value="Chinese">
-                                        Chinese
-                                    </option>
-                                    <option
-                                        {{ old('food_category') == 'Other' ? 'selected' : '' }} 
-                                        value="Other">
-                                        Other
-                                    </option>
+                                    @foreach ($categories as $category)
+                                        <option
+                                            {{ old('food_category') == $category->id  ? 'selected' : '' }} 
+                                            value="{{ $category->id }}">
+                                            {{ $category->category }}
+                                        </option>  
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

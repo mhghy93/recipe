@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
     public function create()
     {
-        return view('recipes.create');
+        $categories = Category::all();
+        return view('recipes.create', [ 'categories' => $categories ]);
     }
 
     public function store(Request $request)
@@ -21,6 +23,9 @@ class RecipeController extends Controller
             'food_category' => 'required',
             'description' => 'required'
         ]);
-        dd($request);
+        // $imagePath = $request->file('pic')->store('images');
+        // // dd($request->all());
+        // $request->file('pic')->move(public_path('images'), $imagePath);
+        // dd($imagePath);
     }
 }
