@@ -44,6 +44,25 @@
                             </div>
                         </div>
 
+                        {{-- Ingredients --}}
+                        <div class="form-group row">
+                            <label for="title" class="col-md-4 col-form-label text-md-left">
+                                <i class="fas fa-chalkboard"></i> {{ __('Ingredients') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input 
+                                    id="ingredients" 
+                                    placeholder="Ingredients" 
+                                    type="text" 
+                                    class="form-control"  
+                                    name="ingredients" 
+                                    value="{{ old('ingredients') }}"
+                                    autocomplete="ingredients" 
+                                    autofocus>
+                            </div>
+                        </div>
+
                         {{-- Pic --}}
                         <div class="form-group row">
                             <label for="pic" class="col-md-4 col-form-label text-md-left">

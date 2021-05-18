@@ -18,6 +18,7 @@ class RecipeController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'ingredients' => 'required',
             'pic' => 'required|mimes:jpg,png,jpeg|max:5048',
             'food_type' => 'required',
             'food_category' => 'required',
