@@ -24,9 +24,17 @@ class RecipeController extends Controller
             'food_category' => 'required',
             'description' => 'required'
         ]);
-        // $imagePath = $request->file('pic')->store('images');
-        // // dd($request->all());
-        // $request->file('pic')->move(public_path('images'), $imagePath);
-        // dd($imagePath);
+        $imagePath = $request->file('pic')->store('images');
+        $request->file('pic')->move(public_path('images'), $imagePath);
+
+        Recipe::create([
+            'title' => $request->input('title'),
+            'ingredients' => $request->input('ingredients'),
+            'description' => $request->input('description'),
+            'pic' => $imagePath,
+            'food_type' => $request->input('food_type'),
+            'category_id' => $request->input('food_category'),
+            'user_id' => auth()->user()->id,
+        ]);
     }
 }

@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header lead">{{ __('Add Recipe') }}</div>
-
                 <div class="card-body">
                     @if ($errors->any())
                        @foreach ($errors->all() as $error)
@@ -46,20 +45,31 @@
 
                         {{-- Ingredients --}}
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-left">
+                            <label for="ingredients" class="col-md-4 col-form-label text-md-left">
                                 <i class="fas fa-chalkboard"></i> {{ __('Ingredients') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input 
-                                    id="ingredients" 
-                                    placeholder="Ingredients" 
-                                    type="text" 
-                                    class="form-control"  
-                                    name="ingredients" 
-                                    value="{{ old('ingredients') }}"
-                                    autocomplete="ingredients" 
-                                    autofocus>
+                                <div class="d-flex justify-content-start">
+                                    <input 
+                                        id="ingredients" 
+                                        placeholder="Ingredients" 
+                                        type="text" 
+                                        class="form-control"  
+                                        name="ingredients" 
+                                        value="{{ old('ingredients') }}"
+                                        autocomplete="ingredients" 
+                                        autofocus>
+                                    <button 
+                                        id="ingredientsButton" 
+                                        class="btn btn-primary ml-2" 
+                                        type="button">
+                                        Add
+                                    </button>
+                                </div> 
+                                <small class="form-text text-muted">
+                                    Ingredients are seperated by comma
+                                </small> 
                             </div>
                         </div>
 
@@ -152,7 +162,7 @@
                                     rows="10" 
                                     class="form-control" 
                                     name="description" 
-                                    autocomplete="name"> 
+                                    autocomplete="description"> 
                                     {{ old('description')}}</textarea>   
                             </div>
                         </div>
