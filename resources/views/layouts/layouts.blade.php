@@ -44,6 +44,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            <a href="{{ url('/recipes') }}" class="nav-link">
+                                <i class="fas fa-hamburger"></i> Recipes
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ url('/recipes/create') }}" class="nav-link">
                                 <i class="fas fa-pizza-slice"></i> Add Recipe
                             </a>

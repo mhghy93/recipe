@@ -8,6 +8,11 @@ use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
+    public function index() 
+    {
+        return view('recipes.index');
+    }
+
     public function create()
     {
         $categories = Category::all();
@@ -36,5 +41,7 @@ class RecipeController extends Controller
             'category_id' => $request->input('food_category'),
             'user_id' => auth()->user()->id,
         ]);
+
+        return redirect('/recipes')->with('message', 'Recipe has been added');
     }
 }
