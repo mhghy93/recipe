@@ -10002,3 +10002,9 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
