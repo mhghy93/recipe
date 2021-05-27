@@ -14,12 +14,14 @@
     <div class="row mt-5">
         @foreach ($recipes as $recipe)
             <div class="col-lg-4 col-md-6 mb-5">
-                <div class="card">
-                    <img 
-                        src="{{ $recipe->pic }}" 
-                        class="card-img-top img-fluid rounded-lg" 
-                        alt="{{ $recipe->title }}">
-                </div>
+                <a href="/recipes/{{ $recipe->id }}">
+                    <div class="card">
+                        <img 
+                            src="{{ url($recipe->pic) }}" 
+                            class="card-img-top img-fluid rounded-lg recipe-images" 
+                            alt="{{ $recipe->title }}">
+                    </div>
+                </a>
                 <h2 class="font-weight-bolder mt-3">{{ $recipe->title }}</h2>
                 <div class="d-flex justify-content-between mt-3">    
                     @if ($recipe->food_type == "non-veg")

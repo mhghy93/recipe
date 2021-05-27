@@ -3,21 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $recipes = Recipe::all();
         return view('recipes.index', ['recipes' => $recipes]);
     }
 
+    public function show($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $user = User::findOrFail($recipe->user_id);
+        $category = Category::findOrFail($recipe->category_id);
+        return view('recipes.show', ['recipe' => $recipe, 'category' => $category, 'user' => $user]);
+    }
+
     public function create()
     {
         $categories = Category::all();
-        return view('recipes.create', [ 'categories' => $categories ]);
+        return view('recipes.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)

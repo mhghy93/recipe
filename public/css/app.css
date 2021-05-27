@@ -10002,9 +10002,29 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.card-img-top {
+.recipe-images {
   width: 100%;
   height: 20vw;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 40vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ingredients-list li {
+  font-size: 1.2rem;
+}
+
+.cooking-instruction {
+  font-size: 1.3rem;
 }

@@ -27,3 +27,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipes.create')->middleware('auth');
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');
+Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
