@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');
 Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
