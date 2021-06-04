@@ -28,13 +28,49 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        {{-- Navbar --}}
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand font-weight-bolder">
+                    <a href="#">
+                        <i class="fas fa-th"></i> My Profile
+                    </a>
+                </li>
+                <li class="font-weight-bolder">
+                    <a href="#">
+                       <i class="fas fa-user"></i>  Edit Profile
+                    </a>
+                </li>
+                <li class="font-weight-bolder">
+                    <a href="#">
+                        <i class="fas fa-pizza-slice"></i>  Add Recipe
+                    </a>
+                </li>
+                <li class="font-weight-bolder">
+                    <a href="#">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="font-weight-bolder">
+                    <a href="#">
+                        <i class="fas fa-user"></i> Recipes
+                    </a>
+                </li>
+                <li class="font-weight-bolder">
+                    <a href="#">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    
+        {{-- navbar --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class="fas fa-hamburger"></i>
-                    {{ config('app.name', 'Recipes') }}
+                <a class="navbar-brand" href="{{ url('/profile') }}">
+                    <i class="fas fa-th"></i> Profile
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,12 +79,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="{{ url('/recipes') }}" class="nav-link">
-                                <i class="fas fa-hamburger"></i> Recipes
-                            </a>
-                        </li>
-
                         <li class="nav-item">
                             <a href="{{ url('/recipes/create') }}" class="nav-link">
                                 <i class="fas fa-pizza-slice"></i> Add Recipe
@@ -102,9 +132,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main id="page-content-wrapper" class="py-4">
+            @yield('profile-content')
         </main>
+
     </div>
 </body>
 </html>
