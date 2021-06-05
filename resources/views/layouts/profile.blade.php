@@ -34,7 +34,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ url('/profile') }}">
                         <i class="fas fa-th"></i> My Profile
                     </a>
                 </li>
@@ -44,22 +44,24 @@
                     </a>
                 </li>
                 <li class="font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ url('/recipes/create') }}">
                         <i class="fas fa-pizza-slice"></i>  Add Recipe
                     </a>
                 </li>
                 <li class="font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ url('/') }}">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
                 <li class="font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ url('/recipes') }}">
                         <i class="fas fa-user"></i> Recipes
                     </a>
                 </li>
                 <li class="font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt"></i> Log Out
                     </a>
                 </li>
