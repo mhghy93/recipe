@@ -35,7 +35,7 @@
                     @endif
                   
                     <h5>
-                        <i class="fas fa-thumbs-up"></i> {{ $recipe->likes }}
+                        <i class="fas fa-thumbs-up"></i> 0
                     </h5>
                 </div>
             </div>

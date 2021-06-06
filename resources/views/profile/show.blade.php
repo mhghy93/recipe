@@ -41,7 +41,9 @@
             <div class="card text-center bg-success text-white h-100 shadow-lg">
                 <div class="card-body">
                     <h1 class="font-weight-bolder">Recipes</h1>
-                    <h4 class="display-4"><i class="fas fa-utensils"></i> 5</h4>
+                    <h4 class="display-4">
+                        <i class="fas fa-utensils"></i> {{ count($recipes) }}
+                    </h4>
                     <a href="{{ url('/recipes') }}" class="btn btn-outline-light btn-lg">View</a>
                 </div>
             </div>

@@ -27,7 +27,7 @@
                 </h3>
                 
                 <h3>
-                    <i class="fas fa-thumbs-up"></i> {{ $recipe->likes }}
+                    <i class="fas fa-thumbs-up"></i> 0
                 </h3>
             </div>
             <h1 class="font-weight-bolder mt-5">Ingredients</h1>    
