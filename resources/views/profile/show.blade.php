@@ -81,7 +81,7 @@
                         </td>
                         <td>{{ date('d F Y', (strtotime($recipe->created_at))) }}</td>
                         <td>
-                            <a href="#" class="btn btn-link">Edit</a>
+                            <a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-link">Edit</a>
                         </td>
                         <td>
                             <a href="#" class="btn btn-link">Delete</a>

@@ -54,4 +54,28 @@ class RecipeController extends Controller
 
         return redirect('/recipes')->with('message', 'Recipe has been added');
     }
+
+    public function edit(Request $request, $id) 
+    {
+        $recipe = Recipe::findOrFail($id);
+        $categories = Category::all();
+        if ($recipe->user_id == auth()->user()->id) {
+            return view('recipes.edit', ['recipe' => $recipe, 'categories' => $categories]);
+        } else {
+            return redirect('/recipes');
+        }
+      
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'ingredients' => 'required',
+            'food_type' => 'required',
+            'food_category' => 'required',
+            'description' => 'required'
+        ]);
+    }
+
 }

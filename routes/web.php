@@ -29,5 +29,6 @@ Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');
 Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit')->middleware('auth');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
