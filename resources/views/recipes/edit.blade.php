@@ -21,8 +21,9 @@
                             </div>
                         @endforeach
                     @endif
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="/recipes/{{ $recipe->id }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         {{-- Title --}}
                         <div class="form-group row">

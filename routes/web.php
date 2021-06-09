@@ -14,7 +14,6 @@ use App\Http\Controllers\ProfileController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::get('/', function () {
@@ -30,5 +29,6 @@ Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index'
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');
 Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit')->middleware('auth');
+Route::put('/recipes/{id}', [RecipeController::class, 'update'])->name('recipes.update')->middleware('auth');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

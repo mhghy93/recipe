@@ -76,6 +76,16 @@ class RecipeController extends Controller
             'food_category' => 'required',
             'description' => 'required'
         ]);
+
+        Recipe::where('id', $id)
+            ->update([
+                'title' => $request->input('title'),
+                'ingredients' => $request->input('ingredients'),
+                'description' => $request->input('description'),
+                'food_type' => $request->input('food_type'),
+                'category_id' => $request->input('food_category')
+            ]);
+        return redirect('/recipes')->with('message', 'Your recipe has been updated');
     }
 
 }
