@@ -162,8 +162,7 @@
                                     rows="10" 
                                     class="form-control" 
                                     name="description" 
-                                    autocomplete="description"> 
-                                    {{ old('description')}}</textarea>   
+                                    autocomplete="description">{{ old('description')}}</textarea>   
                             </div>
                         </div>
 

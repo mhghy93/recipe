@@ -55,7 +55,7 @@ class RecipeController extends Controller
         return redirect('/recipes')->with('message', 'Recipe has been added');
     }
 
-    public function edit(Request $request, $id) 
+    public function edit($id) 
     {
         $recipe = Recipe::findOrFail($id);
         $categories = Category::all();
@@ -77,15 +77,33 @@ class RecipeController extends Controller
             'description' => 'required'
         ]);
 
-        Recipe::where('id', $id)
-            ->update([
-                'title' => $request->input('title'),
-                'ingredients' => $request->input('ingredients'),
-                'description' => $request->input('description'),
-                'food_type' => $request->input('food_type'),
-                'category_id' => $request->input('food_category')
-            ]);
-        return redirect('/recipes')->with('message', 'Your recipe has been updated');
+        $recipe = Recipe::findOrFail($id);
+
+        if ($recipe->user_id == auth()->user()->id) {
+            Recipe::where('id', $id)
+                ->update([
+                    'title' => $request->input('title'),
+                    'ingredients' => $request->input('ingredients'),
+                    'description' => $request->input('description'),
+                    'food_type' => $request->input('food_type'),
+                    'category_id' => $request->input('food_category')
+                ]);
+            return redirect('/recipes')->with('message', 'Your recipe has been updated');
+        } else {
+            return redirect('/recipes');
+        }
+    }
+
+    public function destroy($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        if ($recipe->user_id == auth()->user()->id) {
+            $recipe->delete();
+
+            return redirect('/profile')->with('message', 'Your recipe has been deleted');
+        } else {
+            return redirect('/profile');
+        }
     }
 
 }
