@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 
@@ -31,5 +32,7 @@ Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.sh
 Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipes.edit')->middleware('auth');
 Route::put('/recipes/{id}', [RecipeController::class, 'update'])->name('recipes.update')->middleware('auth');
 Route::delete('/recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy')->middleware('auth');
+
+Route::post('/like/{recipe_id}', [LikeController::class, 'like'])->name('likes.like');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

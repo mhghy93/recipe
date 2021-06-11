@@ -25,10 +25,18 @@
                 <h3 class="font-weight-bolder text-info">
                     <i class="fas fa-utensils"></i> {{ $category->category }}
                 </h3>
-                
-                <h3>
-                    <i class="fas fa-thumbs-up"></i> 0
-                </h3>
+                <h5>
+                    <a 
+                        class="like-btn" 
+                        href="/like/{{ $recipe->id }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('like-form').submit();">
+                            <i class="fas fa-thumbs-up"></i> {{ count($likes) }}
+                    </a>
+                </h5>
+                <form id="like-form" action="/like/{{ $recipe->id }}" method="POST" class="d-none">
+                        @csrf
+                </form>
             </div>
             <h1 class="font-weight-bolder mt-5">Ingredients</h1>    
             <ul class="ingredients-list">    

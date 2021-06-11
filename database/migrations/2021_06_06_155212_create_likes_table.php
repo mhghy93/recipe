@@ -17,7 +17,7 @@ class CreateLikesTable extends Migration
             $table->id();
             $table->foreignId('recipe_id')->constrained('recipes');
             $table->foreignId('user_id')->constrained('users');
-            $table->bigInteger('likes')->default('0');
+            $table->boolean('like')->default(false);
             $table->timestamps();
         });
     }

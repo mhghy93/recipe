@@ -34,9 +34,9 @@
                         </h5>
                     @endif
                   
-                    <h5>
+                    {{-- <h5>
                         <i class="fas fa-thumbs-up"></i> 0
-                    </h5>
+                    </h5> --}}
                 </div>
             </div>
         @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Like;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
@@ -20,7 +21,13 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
         $user = User::findOrFail($recipe->user_id);
         $category = Category::findOrFail($recipe->category_id);
-        return view('recipes.show', ['recipe' => $recipe, 'category' => $category, 'user' => $user]);
+        $likes = Like::where('recipe_id', $id)->get();
+        return view('recipes.show', [
+            'recipe' => $recipe, 
+            'category' => $category, 
+            'user' => $user,
+            'likes' => $likes
+            ]);
     }
 
     public function create()

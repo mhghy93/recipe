@@ -119,8 +119,18 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: $white;
     background: none;
+}
+
+.like-btn {
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+        text-decoration: none;
+        color: $red;
+    }
 }
 
 @media (min-width: 768px) {
