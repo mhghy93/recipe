@@ -37,6 +37,9 @@
                     {{-- <h5>
                         <i class="fas fa-thumbs-up"></i> 0
                     </h5> --}}
+                    <h5 class="text-info font-weight-bolder">
+                        <i class="fas fa-utensils"></i> {{ $recipe->category->category }}
+                    </h5>
                 </div>
             </div>
         @endforeach
