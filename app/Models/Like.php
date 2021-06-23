@@ -10,4 +10,9 @@ class Like extends Model
     use HasFactory;
 
     protected $fillable = ['recipe_id', 'user_id', 'like']; 
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }

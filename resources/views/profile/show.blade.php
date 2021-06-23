@@ -3,7 +3,7 @@
 <div class="container pt-3">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show w-50 text-center" role="alert">
-            <strong>kfkslkf</strong>
+            <strong>{{ $message }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -37,33 +37,52 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card-text">
-                        <h3 class="font-weight-bolder">{{ count($recipes) }}</h3>
-                        <p class="text-muted font-weight-bolder">Recipes</p>
+                    <div class="d-flex justify-content-between">
+                        <div class="card-text">
+                            <h3 class="font-weight-bolder">{{ count($recipes) }}</h3>
+                            <p class="text-muted font-weight-bolder">Recipes</p>
+                        </div>
+
+                        <div class="card-text">
+                            <h3 class="font-weight-bolder">{{ count($likedRecipes) }}</h3>
+                            <p class="text-muted font-weight-bolder">Liked</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6 mt-2">
+        <div class="col-md-3 mt-2">
             <div class="card text-center bg-success text-white h-100 shadow-lg">
                 <div class="card-body">
                     <h1 class="font-weight-bolder">Recipes</h1>
                     <h4 class="display-4">
                         <i class="fas fa-utensils"></i> {{ count($recipes) }}
                     </h4>
-                    <a href="{{ url('/recipes') }}" class="btn btn-outline-light btn-lg">View</a>
+                    <a href="#recipes" class="btn btn-outline-light btn-lg">View</a>
                 </div>
-            </div>
+            </div>          
+        </div>
+
+        <div class="col-md-3 mt-2">
+            <div class="card text-center bg-info text-white h-100 shadow-lg">
+                <div class="card-body">
+                    <h1 class="font-weight-bolder">Liked Recipe</h1>
+                    <h4 class="display-4">
+                        <i class="fas fa-thumbs-up"></i> {{ count($likedRecipes) }}
+                    </h4>
+                    <a href="#likedRecipes" class="btn btn-outline-light btn-lg">View</a>
+                </div>
+            </div>          
         </div>
     </div>
 
-    <hr class="mt-5">
+    <hr class="mt-5 mb-5">
 
     <h1>My Recipes</h1>
     {{-- Table of recipes --}}
     @if (count($recipes) > 0)    
-        <table class="table table-striped mt-5">
+        <table id="recipes" class="table table-striped mt-5">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -128,6 +147,41 @@
         </div>
     @else
         <h2 class="mt-5">No Recipes added</h2>
+    @endif
+
+    <h1 class="mt-5">Liked Recipes</h1>
+    @if (count($likedRecipes) > 0)
+        <table id="likedRecipes" class="table table-striped mt-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Pic</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            @foreach ($likedRecipes as $recipe)
+                <tr>
+                    <th scope="row">{{ $loop->index + 1 }}</th>
+                    <td>{{ $recipe->recipe->title }}</td>
+                    <td>
+                        <img 
+                            width="50"
+                            height="50"
+                            class="img-thumbnail"
+                            src="{{ url($recipe->recipe->pic) }}" 
+                            alt="{{ $recipe->recipe->title }}">
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <i class="fas fa-thumbs-down"></i> Dislike
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    @else
+        <h2 class="mt-5">No Recipes liked</h2>
     @endif
 </div>
 @endsection

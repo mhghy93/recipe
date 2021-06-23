@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Recipe;
@@ -22,9 +23,11 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(auth()->user()->id);
         $recipes = Recipe::where('user_id', $user->id)->get();
+        $likedRecipes = Like::where('user_id', $user->id)->get();
         return view('profile.show', [
             'user' => $user,
-            'recipes' => $recipes
+            'recipes' => $recipes,
+            'likedRecipes' => $likedRecipes
         ]);
     }
 
