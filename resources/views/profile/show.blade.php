@@ -3,7 +3,7 @@
 <div class="container pt-3">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show w-50 text-center" role="alert">
-            <strong>{{ $message }}</strong>
+            <strong>{{ session('message') }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -173,10 +173,18 @@
                             alt="{{ $recipe->recipe->title }}">
                     </td>
                     <td>
-                        <a href="#" class="btn btn-danger">
-                            <i class="fas fa-thumbs-down"></i> Dislike
-                        </a>
-                    </td>
+                        <form 
+                            id="dislike-form" 
+                            action="/dislike/{{ $recipe->recipe->id }}" 
+                            method="POST" 
+                            >
+                            @csrf
+                            @method('delete') 
+                            <button class="btn btn-danger">
+                                <i class="fas fa-thumbs-down"></i> Dislike
+                            </button>                     
+                        </form>         
+                    </td>       
                 </tr>
             @endforeach
         </table>

@@ -34,5 +34,6 @@ Route::put('/recipes/{id}', [RecipeController::class, 'update'])->name('recipes.
 Route::delete('/recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy')->middleware('auth');
 
 Route::post('/like/{recipe_id}', [LikeController::class, 'like'])->name('likes.like');
+Route::delete('/dislike/{recipe_id}', [LikeController::class, 'dislike'])->name('likes.dislike');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
