@@ -113,38 +113,18 @@
                             </a>
                         </td>
                         <td>
-                            <a href="#" 
-                                class="btn btn-danger"  
-                                data-toggle="modal" 
-                                data-target="#deleteConfirm">
-                                <i class="fas fa-trash"></i> Delete
-                            </a>
+                            <form action="/recipes/{{ $recipe->id }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger" name="deleteRecipe">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <!-- Delete Modal -->
-        <div class="modal mt-5" id="deleteConfirm" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Delete Confirm</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete this recipe</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-                        <form action="/recipes/{{ $recipe->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger" name="deletePost">Ok</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     @else
         <h2 class="mt-5">No Recipes added</h2>
     @endif
