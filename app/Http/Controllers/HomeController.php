@@ -15,6 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $recentRecipes = Recipe::orderBy('created_at', 'desc')->limit(3)->get();
-        return view('index', ['recentRecipes' => $recentRecipes]);
+        $mostLikedRecipes = Recipe::withCount('likes')->orderBy('likes_count', 'desc')->limit(3)->get();
+        return view('index', ['recentRecipes' => $recentRecipes, 'mostLikedRecipes' => $mostLikedRecipes]);
     }
 }
