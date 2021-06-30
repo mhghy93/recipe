@@ -17,13 +17,9 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipes.create')->middleware('auth');
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
