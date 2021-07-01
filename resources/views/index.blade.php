@@ -2,6 +2,18 @@
 
 @section('content')
     <div class="container">
+        {{-- Search bar --}}
+        <form action="">
+            <div class="input-group">
+                <input type="text" class="form-control py-4 rounded-lg" placeholder="Search...">
+                <div class="input-group-append">
+                    <button class="btn btn-danger px-4 font-weight-bolder">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
         {{-- Most recent recipes --}}
         <h2 class="mt-5 font-weight-bold">Most Recent Recipes</h2>
         <div class="row mt-3">
