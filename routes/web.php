@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,7 @@ Route::delete('/recipes/{id}', [RecipeController::class, 'destroy'])->name('reci
 
 Route::post('/like/{recipe_id}', [LikeController::class, 'like'])->name('likes.like');
 Route::delete('/dislike/{recipe_id}', [LikeController::class, 'dislike'])->name('likes.dislike');
+
+Route::post('/recipes/search', [SearchController::class, 'search'])->name('search.search');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

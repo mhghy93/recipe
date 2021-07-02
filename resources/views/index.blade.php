@@ -3,9 +3,10 @@
 @section('content')
     <div class="container">
         {{-- Search bar --}}
-        <form action="">
+        <form action="/recipes/search" method="POST">
+            @csrf
             <div class="input-group">
-                <input type="text" class="form-control py-4 rounded-lg" placeholder="Search...">
+                <input type="text" class="form-control py-4 rounded-lg" name="query" placeholder="Search...">
                 <div class="input-group-append">
                     <button class="btn btn-danger px-4 font-weight-bolder">
                         <i class="fas fa-search"></i>
