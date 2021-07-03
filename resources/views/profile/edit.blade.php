@@ -8,8 +8,31 @@
                 <div class="card-header lead">Edit Profile</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if (session('message'))
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            <strong>{{ session('message') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $error }}
+                                <button 
+                                    type="button" 
+                                    class="close" 
+                                    data-dismiss="alert" 
+                                    aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endforeach
+                    @endif
+                    <form method="POST" action="/profile/edit">
                         @csrf
+                        @method('PUT')
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-left">
@@ -21,10 +44,9 @@
                                     id="name" 
                                     placeholder="Name" 
                                     type="text" 
-                                    class="form-control  @error('name') is-invalid @enderror" 
+                                    class="form-control" 
                                     name="name" 
                                     value="{{ $user->name }}" 
-                                    required 
                                     autocomplete="name" 
                                     autofocus>
 
@@ -46,17 +68,10 @@
                                     id="email" 
                                     type="email" 
                                     placeholder="Email" 
-                                    class="form-control @error('email') is-invalid @enderror" 
+                                    class="form-control" 
                                     name="email" 
                                     value="{{ $user->email }}" 
-                                    required 
                                     autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 

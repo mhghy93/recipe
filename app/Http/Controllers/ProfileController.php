@@ -45,12 +45,30 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+        ]);
+
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        $user = User::where('email', $email)->where('email', '!=', auth()->user()->email)->get();
+
+        if (count($user) == 0) {
+            User::where('id', auth()->user()->id)->update([
+                'name' => $name,
+                'email' => $email
+            ]);
+            return redirect('/profile')->with('message', 'Your profile has been updated');
+        } else {
+            return redirect('/profile/edit')->with('message', 'This email has already been taken');
+        }
     }
 
     /**
