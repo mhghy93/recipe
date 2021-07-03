@@ -36,3 +36,4 @@ Route::delete('/dislike/{recipe_id}', [LikeController::class, 'dislike'])->name(
 Route::post('/recipes/search', [SearchController::class, 'search'])->name('search.search');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

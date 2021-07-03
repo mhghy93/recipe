@@ -33,13 +33,12 @@ class ProfileController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = User::findOrFail(auth()->user()->id);
+        return view('profile.edit', ['user' => $user]);
     }
 
     /**

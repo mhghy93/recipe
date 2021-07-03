@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 mb-2">
-                            <a href="" class="btn btn-success btn-block">
+                            <a href="/profile/edit" class="btn btn-success btn-block">
                                 <i class="fas fa-pencil-alt"></i> Edit
                             </a>
                         </div>

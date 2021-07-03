@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="font-weight-bolder">
-                    <a href="#">
+                    <a href="{{ url('/profile/edit') }}">
                        <i class="fas fa-user"></i>  Edit Profile
                     </a>
                 </li>
