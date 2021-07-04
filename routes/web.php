@@ -38,3 +38,4 @@ Route::post('/recipes/search', [SearchController::class, 'search'])->name('searc
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');

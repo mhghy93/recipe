@@ -171,5 +171,34 @@
     @else
         <h2 class="mt-5">No Recipes liked</h2>
     @endif
+
+    <button 
+        class="btn btn-danger mt-5"
+        data-toggle="modal" 
+        data-target="#deleteProfile">
+        <i class="fas fa-trash"></i> Delete My Profile
+    </button>
+
+    <!-- Delete Profile Modal -->
+    <div class="modal mt-5" id="deleteProfile" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Confirm</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your profile?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                    <form action="/profile/delete" method="POST">
+                        @csrf
+                        @method('delete') 
+                        <button type="submit" class="btn btn-danger" name="deletePost">Ok</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

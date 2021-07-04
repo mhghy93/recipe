@@ -6,12 +6,24 @@ use App\Models\Like;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    protected static function get_liked_recipes_id($userRecipes)
+    {
+        $user_id_liked_by_others = array();
+
+        foreach ($userRecipes as $recipe) {
+            $user_id_liked_by_others[] = $recipe->id;
+        }
+
+        return $user_id_liked_by_others;
     }
 
     /**
@@ -74,11 +86,25 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $user_id = auth()->user()->id;
+
+        $user = User::findOrFail($user_id);
+        $userRecipes = Recipe::where('user_id', $user_id)->get();
+        $recipesLikedByUser = Like::where('user_id', $user_id)->get();
+        $user_id_liked_by_others = ProfileController::get_liked_recipes_id($userRecipes);
+        $recipesLikedByOthers = Like::whereIn('recipe_id', $user_id_liked_by_others)->get(); 
+
+        $recipesLikedByOthers->each->delete();
+        $recipesLikedByUser->each->delete();
+        $userRecipes->each->delete();
+        $user->delete();
+
+        Auth::logout();
+        return redirect('/');
+
     }
 }

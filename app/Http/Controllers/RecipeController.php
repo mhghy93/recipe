@@ -59,7 +59,7 @@ class RecipeController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect('/recipes')->with('message', 'Recipe has been added');
+        return redirect('/profile')->with('message', 'Recipe has been added');
     }
 
     public function edit($id) 
