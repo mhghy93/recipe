@@ -10002,6 +10002,11 @@ h3 {
     border-color: #dee2e6;
   }
 }
+html,
+body {
+  height: 100%;
+}
+
 .recipe-images {
   width: 100%;
   height: 20vw;
@@ -10114,6 +10119,16 @@ h3 {
 .like-btn:hover {
   text-decoration: none;
   color: #e3342f;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+  background: #000000;
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
