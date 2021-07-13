@@ -1,10 +1,18 @@
-## IndoRecipes
+## EasyRecipes
 
-IndoRecipes is a web application that allows users to create, edit and delete recipes. As well as like recipes added by other users.
+EasyRecipes is a web application that allows users to create, edit and delete recipes. As well as like recipes added by other users.
 
 ## Home Page
 
-![recipe-home](https://user-images.githubusercontent.com/27516303/124508104-dd509c00-ddec-11eb-957e-8983f53e83b1.png)
+![recipe-home](https://user-images.githubusercontent.com/27516303/125405526-76774800-e3d5-11eb-8305-ba6e2d5a750b.png)
+
+## Recipe Details
+
+![recipe-detail01](https://user-images.githubusercontent.com/27516303/125405342-4039c880-e3d5-11eb-8294-619fcba6f40e.png)
+
+
+![recipe-detail02](https://user-images.githubusercontent.com/27516303/125405407-534c9880-e3d5-11eb-9b66-e4baa7f49cdd.png)
+
 
 ## Add Recipe
 
